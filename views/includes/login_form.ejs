@@ -1,0 +1,36 @@
+<form action="/login" autocomplete="off" class="sign-in-form" method="POST" >
+    <div class="logo">
+        <img src="/assets/logo.png" alt="easyshop" />
+        <h4>Easyshop</h4>
+    </div>
+    <div class="heading">
+        <h2>Բարի վերադարձ</h2>
+        <h6>Դեռ գրանցված չե՞ք?</h6>
+        <a href="#" class="toggle">Գրանցվել</a>
+    </div>
+    <div class="actual-form">
+        <div class="input-wrap">
+            <input class="<%= validationErrors.find(e => e.path === 'email') ? 'invalid' : ''%> input-field <%= oldInput.email !== '' ? 'active' : ''%>"
+                   type="text" minlength="4"  autocomplete="off" id="email" name="email"
+                   value="<%= oldInput.email%>"
+                   required/>
+            <label>Էլեկտրոնային հասցե</label>
+        </div>
+
+        <div class="input-wrap">
+            <input
+                    class="<%= validationErrors.find(e => e.path === 'password') ? 'invalid' : ''%> input-field <%= oldInput.password !== '' ? 'active' : ''%>"
+                    type="password" minlength="4" autocomplete="off" id="password"  name="password"
+                    value="<%= oldInput.password%>"
+                    required/>
+            <label>Գաղտանաբառ</label>
+        </div>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <% if (errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+        <button type="submit" value="Sign In" class="sign-btn" id="sign-in">Մուտք գործել</button>
+
+        <p class="text">Մոռացե՞լ եք ձեր գաղտնաբառը կամ մուտքի տվյալները<a href="/reset">Օգնություն ստանալ</a>մուտք գործել</p>
+    </div>
+</form>

@@ -1,0 +1,59 @@
+<form  action="/signup" autocomplete="off" class="sign-up-form" method="POST">
+    <div class="logo">
+        <img src="/assets/logo.png" alt="easyshop" />
+        <h4>Easyshop</h4>
+    </div>
+
+    <div class="heading">
+        <h2>Սկսել</h2>
+        <h6>Արդեն ունեք հաշիվ?</h6>
+        <a href="#" class="toggle">Մուտք գործել</a>
+    </div>
+
+    <div class="actual-form">
+        <div class="input-wrap">
+            <input
+                    class="<%= validationErrors.find(e => e.path === 'username') ? 'invalid' : ''%> input-field <%= oldInput.username !== '' ? 'active' : ''%>"
+                    type="text" minlength="4" autocomplete="off" id="username"  name="username"
+                    value="<%= oldInput.username%>"
+                    required/>
+            <label>Մուտքանուն</label>
+        </div>
+
+        <div class="input-wrap">
+            <input class="<%= validationErrors.find(e => e.path === 'email') ? 'invalid' : ''%> input-field <%= oldInput.email !== '' ? 'active' : ''%>"
+                   type="text" minlength="4"  autocomplete="off" id="email" name="email"
+                   value="<%= oldInput.email%>"
+                   required/>
+            <label>Էելեկտրոնային հասցե</label>
+        </div>
+
+        <div class="input-wrap">
+            <input
+                    class="<%= validationErrors.find(e => e.path === 'password') ? 'invalid' : ''%> input-field <%= oldInput.password !== '' ? 'active' : ''%>"
+                    type="password" minlength="4" autocomplete="off" id="password"  name="password"
+                    value="<%= oldInput.password%>"
+                    required/>
+            <label>Գաղտանբառ</label>
+        </div>
+        <div class="input-wrap">
+            <input
+                    class="<%= validationErrors.find(e => e.path === 'confirmPassword') ? 'invalid' : ''%> input-field <%= oldInput.confirmPassword !== '' ? 'active' : ''%>"
+                    type="password" minlength="4" autocomplete="off" id="confirmPassword"  name="confirmPassword"
+                    value="<%= oldInput.password%>"
+                    required/>
+            <label>Հաստատել գաղտնաբառը</label>
+        </div>
+
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <% if (errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+        <button type="submit" value="Sign In" class="sign-btn" id="sign-up">Sign Up</button>
+        <p class="text">
+            By signing up, I agree to the
+            <a href="#">Terms of Services</a> and
+            <a href="#">Privacy Policy</a>
+        </p>
+    </div>
+</form>
